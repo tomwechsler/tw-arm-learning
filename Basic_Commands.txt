@@ -1,0 +1,26 @@
+#On your local Computer (with the installed git client) for example in PowerShell
+
+git config --global user.name "Your Name"
+git config --global user.email your@emailaddress.com
+
+#In the Azure Cloud Shell
+az account show
+** copy the subscription ID**
+
+#You can limit the role and scope of the service principal if required. Replace xxxxx-xxx-xx with subscription ID
+az ad sp create-for-rbac --name GitHubActions --role contributor --scopes /subscriptions/xxxxx-xxx-xx --sdk-auth
+
+#In GitHub create a personal access token
+
+#Create a new GitHub Repo and clone it to the local Machine
+git clone <URL of the repo>
+
+#cd into the cloned repo (the directory name = repo name)
+
+#Force a login
+git push
+
+#After some changes do the following
+git add .
+git commit -m "enter the commit message here"
+git push
